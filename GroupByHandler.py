@@ -4,6 +4,7 @@ import heapq
 
 from collections import defaultdict
 
+
 class GroupByHandler:
     """Class that groups input tuples by key.
 
@@ -16,7 +17,6 @@ class GroupByHandler:
         self.cur_memory_used = 0
         self.memory_limit = memory_limit
         self.groups = defaultdict(list)
-
 
     def group_by(self, input):
         """The groupby entry point
@@ -36,7 +36,7 @@ class GroupByHandler:
                 if not self.cur_memory_used < self.memory_limit:
                     self.groups[key_value[0]].append(key_value[1])
                 else:
-                    f_group = open('group_{}'.format(GroupByHandler.count),"w")
+                    f_group = open('group_{}'.format(GroupByHandler.count), "w")
                     f_group.write(pickle.dump(self.groups))
                     f_group.close()
                     self.groups = defaultdict(list)
@@ -52,9 +52,8 @@ class GroupByHandler:
         out.write(pickle.dump(f_stream))
 
 
-    # def group_by(self, key_value_iter):
+        # def group_by(self, key_value_iter):
 
-    #
-    #     for key,value in self.groups.items():
-    #         yield (key,value)
-
+        #
+        #     for key,value in self.groups.items():
+        #         yield (key,value)
